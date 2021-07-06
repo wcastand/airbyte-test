@@ -75,38 +75,38 @@ export default function Home() {
 				</div>
 			)}
 			{!data && <div>Loading...</div>}
-			<div className={tw('flex-1 flex flex-col')}>
-				<div className={tw('my-8 col-span-1 flex flex-row flex-wrap justify-start items-start')}>
-					<Stat label="Cumulated followers" value={cumulatedFollowers?.toLocaleString('en-GB')} />
-					<Stat label="Total genres" value={allGenres.length} />
-					<Stat label="Average popularity" value={avgPopularity} />
-				</div>
-				<div className={tw('my-8 col-span-1 lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center')}>
-					<Pie label="Followers repartition" data={pieData} />
-					<Bar data={barData} keys={allArtist} indexBy="genre" label="Artists by genre" />
-				</div>
-				<div className={tw('my-8 flex-1 flex flex-col')}>
-					<div className={tw('ml-0 lg:ml-auto grid grid-cols-2 gap-4')}>
-						<input
-							className={tw(input)}
-							type="text"
-							placeholder="Search by artist..."
-							name="query"
-							id="query"
-							value={query}
-							onChange={(e) => setQuery(e.target.value)}
-							disabled={error && !data}
-						/>
-						<select className={tw(select)} onChange={(e) => setSelected(e.target.value)} value={selected}>
-							<option value="">All genres</option>
-							{allGenres.map((genre) => (
-								<option key={`option_item_${genre}`} value={genre}>
-									{genre}
-								</option>
-							))}
-						</select>
+			{!error && !!data && (
+				<div className={tw('flex-1 flex flex-col')}>
+					<div className={tw('my-8 col-span-1 flex flex-row flex-wrap justify-start items-start')}>
+						<Stat label="Cumulated followers" value={cumulatedFollowers?.toLocaleString('en-GB')} />
+						<Stat label="Total genres" value={allGenres.length} />
+						<Stat label="Average popularity" value={avgPopularity} />
 					</div>
-					{!error && !!data && (
+					<div className={tw('my-8 col-span-1 lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center')}>
+						<Pie label="Followers repartition" data={pieData} />
+						<Bar data={barData} keys={allArtist} indexBy="genre" label="Artists by genre" />
+					</div>
+					<div className={tw('my-8 flex-1 flex flex-col')}>
+						<div className={tw('ml-0 lg:ml-auto grid grid-cols-2 gap-4')}>
+							<input
+								className={tw(input)}
+								type="text"
+								placeholder="Search by artist..."
+								name="query"
+								id="query"
+								value={query}
+								onChange={(e) => setQuery(e.target.value)}
+								disabled={error && !data}
+							/>
+							<select className={tw(select)} onChange={(e) => setSelected(e.target.value)} value={selected}>
+								<option value="">All genres</option>
+								{allGenres.map((genre) => (
+									<option key={`option_item_${genre}`} value={genre}>
+										{genre}
+									</option>
+								))}
+							</select>
+						</div>
 						<table className={tw`table-auto border-collapse w-full text-left`}>
 							<thead>
 								<tr className={tw(headrow)}>
@@ -145,9 +145,9 @@ export default function Home() {
 								))}
 							</tbody>
 						</table>
-					)}
+					</div>
 				</div>
-			</div>
+			)}
 		</div>
 	)
 }
