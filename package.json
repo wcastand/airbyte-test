@@ -9,14 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nivo/bar": "^0.72.0",
+    "@nivo/core": "^0.72.0",
+    "@nivo/pie": "^0.72.0",
+    "@twind/next": "^1.0.8",
     "next": "11.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "swr": "^0.5.6",
+    "twind": "^0.16.16"
   },
   "devDependencies": {
     "@types/react": "17.0.13",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
+    "prettier": "^2.3.2",
     "typescript": "4.3.5"
   }
 }
